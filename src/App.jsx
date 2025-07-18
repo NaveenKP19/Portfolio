@@ -156,10 +156,10 @@ const App = () => {
             </a>
           </div>
           <div className="mt-5 d-flex justify-content-center gap-4">
-            <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover-text-cyan-300 transition-colors duration-200">
+            <a href="https://github.com/NaveenKP19" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover-text-cyan-300 transition-colors duration-200">
               <i className="fab fa-github fa-2x"></i>
             </a>
-            <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover-text-fuchsia-300 transition-colors duration-200">
+            <a href="https://www.linkedin.com/in/naveen-pathak-37511b291/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover-text-fuchsia-300 transition-colors duration-200">
               <i className="fab fa-linkedin fa-2x"></i>
             </a>
           </div>
