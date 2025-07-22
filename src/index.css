@@ -636,3 +636,15 @@ body {
   object-fit: cover;
   height: 500px;
 }
+.fullscreen-carousel {
+          height: 100vh;
+          width: 100vw;
+        }
+
+        .fullscreen-carousel .carousel-inner,
+        .fullscreen-carousel .carousel-item,
+        .fullscreen-carousel img {
+          height: 100%;
+          width: 100%;
+          object-fit: cover;
+        }
