@@ -210,7 +210,7 @@ const App = () => {
           </div>
           <div className="col-md-6 d-flex justify-content-center">
             <div className="profile-img-container">
-              <img src="../../src/assets/Naveen1.jpg" alt="Your Profile" className="img-fluid" />
+              <img src="/assets/Naveen1.jpg" alt="Your Profile" className="img-fluid" />
               <div className="profile-img-overlay"></div>
               <div className="profile-img-dashed-border"></div>
             </div>
@@ -386,7 +386,7 @@ const App = () => {
           {/* TASKORA */}
           <div className="carousel-item-cyber">
             <div className="card-cyber text-center">
-              <img src="../../src/assets/taskora.png" className="img-fluid mb-3" alt="Taskora Project" />
+              <img src="/assets/taskora.png" className="img-fluid mb-3" alt="Taskora Project" />
               <h3 className="text-cyan-300 font-orbitron mb-2">TASKORA</h3>
               <p className="text-gray-400 font-mono text-sm">
                 &gt; A full-stack task management system built with Angular and Spring Boot. Includes user authentication, Twilio-based SMS reminders, personalized dashboards, and CRUD operations with MySQL.
@@ -403,7 +403,7 @@ const App = () => {
           {/* CLIMEX */}
           <div className="carousel-item-cyber">
             <div className="card-cyber text-center">
-              <img src="../../src/assets/climax.png" className="img-fluid mb-3" alt="ClimeX Weather App" />
+              <img src="/assets/climax.png" className="img-fluid mb-3" alt="ClimeX Weather App" />
               <h3 className="text-cyan-300 font-orbitron mb-2">CLIMEX</h3>
               <p className="text-gray-400 font-mono text-sm">
                 &gt; A responsive weather application using HTML, CSS & JavaScript. Features live weather data, animated icons, dynamic backgrounds, geolocation, and 6-day forecast using public APIs.
@@ -420,7 +420,7 @@ const App = () => {
           {/* SOCIAL MEDIA POST APP */}
           <div className="carousel-item-cyber">
             <div className="card-cyber text-center">
-              <img src="../../src/assets/social.png" className="img-fluid mb-3" alt="Social Media Post Manager" />
+              <img src="/assets/social.png" className="img-fluid mb-3" alt="Social Media Post Manager" />
               <h3 className="text-cyan-300 font-orbitron mb-2">SOCIAL POST APP</h3>
               <p className="text-gray-400 font-mono text-sm">
                 &gt; A single-page social media post manager built with Angular. Supports post creation, filtering by platform, editing, deleting, and live timestamp tracking using arrays and custom styling.
