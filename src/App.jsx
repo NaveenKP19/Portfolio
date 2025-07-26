@@ -227,15 +227,9 @@ const App = () => {
   <div id="projectBootstrapCarousel" className="carousel slide custom-project-carousel" data-bs-ride="carousel">
     <div className="carousel-indicators">
       {projects.map((_, index) => (
-        <button
-          key={index}
-          type="button"
-          data-bs-target="#projectBootstrapCarousel"
-          data-bs-slide-to={index}
-          className={index === 0 ? 'active' : ''}
-          aria-current={index === 0 ? 'true' : 'false'}
-          aria-label={`Slide ${index + 1}`}
-        ></button>
+        <button key={index} type="button" data-bs-target="#projectBootstrapCarousel" data-bs-slide-to={index} className={index === 0 ? 'active' : ''} aria-current={index === 0 ? 'true' : 'false'} 
+        
+        aria-label={`Slide ${index + 1}`}></button>
       ))}
     </div>
     <div className="carousel-inner">
@@ -444,6 +438,7 @@ const App = () => {
           <div id="carouselExampleCaptions" className="carousel slide custom-carousel">
           <h2 className="section-title-cyber">ACCREDITATIONS</h2>
           <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+
             <div className="col">
               <div className="card-cyber text-center">
                 <i className="fas fa-award fa-3x text-yellow-400 mb-3 mx-auto animate-pulse-slow"></i>
@@ -455,6 +450,7 @@ const App = () => {
                 </a>
               </div>
             </div>
+
             <div className="col">
               <div className="card-cyber text-center">
                 <i className="fas fa-code fa-3x text-teal-400 mb-3 mx-auto animate-pulse-slow delay-100"></i>
@@ -466,6 +462,7 @@ const App = () => {
                 </a>
               </div>
             </div>
+
             <div className="col">
               <div className="card-cyber text-center">
                 <i className="fas fa-terminal fa-3x text-blue-400 mb-3 mx-auto animate-pulse-slow delay-200"></i>

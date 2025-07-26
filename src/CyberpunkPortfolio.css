@@ -343,13 +343,72 @@ Glassy Card Effect
     }
 }
 
+#contact {
+  background-color: #060616;
+  padding: 2rem;
+  margin-top: 2rem;
+  border: 2px solid #39ff14; /* Neon green border */
+  border-radius: 14px;
+  box-shadow:
+    0 0 10px #39ff14,
+    0 0 20px #39ff14,
+    0 0 40px #39ff14,
+    0 0 60px #39ff14;
+}
 
 
+#projects {
+  background-color: #060616;
+  padding: 2rem;
+  margin-top: 2rem;
+  border: 2px solid #ff6e00; /* Neon orange border */
+  border-radius: 14px;
+  box-shadow:
+    0 0 10px #ff6e00,
+    0 0 20px #ff6e00,
+    0 0 40px #ff6e00,
+    0 0 60px #ff6e00;
+}
 
 
+.card-cyber {
+  max-width: 300px; /* Shrinks width of each card */
+  padding: 1rem;     /* Reduce internal spacing */
+  margin: auto;      /* Center the cards */
+  transform: scale(0.9); /* Slightly scale down the overall card */
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Optional: on hover, scale up slightly for effect */
+.card-cyber:hover {
+  transform: scale(1);
+}
+
+/* Optional: reduce image size inside card */
+.card-cyber img {
+  max-height: 160px;
+  object-fit: contain;
+}
 
 
+.project-carousel {
+  overflow-x: hidden;        /* Hides horizontal scrollbar */
+  padding: 1rem 0;
+}
 
+.carousel-3d-wrapper {
+  overflow-x: hidden;
+  width: 100%;
+}
 
-
-
+.carousel-3d {
+  display: flex;
+  flex-wrap: wrap;           /* Allows cards to wrap to next line */
+  justify-content: center;   /* Centers cards */
+  gap: 1.5rem;               /* Space between cards */
+}
+.carousel-item-cyber {
+  flex: 1 1 300px;       /* Responsive, wraps at 300px width */
+  max-width: 300px;      /* Prevents overflowing too wide */
+  box-sizing: border-box;
+}

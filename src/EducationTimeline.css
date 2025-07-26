@@ -1,163 +1,363 @@
+
+/* General container for the timeline */
 .timeline-container {
-  background-color:  #060616;;
-  padding: 4rem 1rem;
-  text-align: center;
-  position: relative;
-  height: 500px;
-}
-.timeline-heading {
-  margin-bottom: 3rem; /* spacing between title and icons */
+    position: relative;
+    width: 100%;
+    height: 700px; /* Adjust height as needed */
+    overflow: hidden; /* Hide overflow content for dragging */
+    background: #0d0a1d; /* Dark background */
+    border: 2px solid #5a12d6;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select:auto; 
+     cursor:grab;
 }
 
+.timeline-container.dragging {
+    cursor:grabbing;
+}
 
 .timeline-title {
-  font-size: 2.5rem;
-  font-family: 'Orbitron', sans-serif;
-  margin-bottom: 3rem;
-  background: linear-gradient(to right, #00fff7, #a64dff, #ff70a6);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+    position: absolute;
+    top: 20px; /* Adjust as needed */
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2.5em; /* Increased font size */
+    color: #8a2be2; /* BlueViolet */
+    text-shadow: 0 0 10px #8a2be2, 0 0 20px #8a2be2, 0 0 30px #8a2be2;
+    z-index: 10;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Example font */
+    letter-spacing: 2px;
 }
 
-/* SVG Curved Path */
+
+/* --- Overview Bubbles (Visible when activeSection is 'none') --- */
+/* Base style for overview bubbles */
+.timeline-overview-bubble {
+    position: absolute;
+    width: 200px;
+    height: 300px;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column; /* Allows stacking text */
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    transition: all 0.5s ease-in-out, box-shadow 0.3s ease;
+    z-index: 5;
+    background: linear-gradient(135deg, #4b0082, #8a2be2); /* Indigo to BlueViolet */
+    box-shadow: 0 0 15px rgba(138, 43, 226, 0.7), 0 0 30px rgba(138, 43, 226, 0.5); /* Glow effect */
+    border: 2px solid #8a2be2; /* Matching border */
+    text-align: center;
+    padding: 10px;
+    box-sizing: border-box; /* Include padding in width/height */
+}
+
+/* Specific styling for the Education Overview Bubble to match the image */
+.timeline-overview-bubble-education {
+    position: absolute;
+    left: 150px; /* Adjust to match image placement for education bubble */
+    top: 50%;
+    transform: translateY(-50%); /* Vertically center */
+    width: 200px; /* Larger to accommodate "Education Timeline Overview" */
+    height: 200px; /* Larger */
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column; /* To stack text */
+    justify-content: center;
+    align-items: center;
+    font-size: 1.6em; /* Adjust font size */
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    transition: all 0.5s ease-in-out, box-shadow 0.3s ease;
+    z-index: 5;
+    background: radial-gradient(circle at center, #8a2be2 0%, #4b0082 100%); /* Radial gradient for deeper effect */
+    box-shadow: 0 0 20px #2a0066, 0 0 40px #5a12d6, 0 0 60px #8a2be2; /* More intense glow */
+    border: 3px solid #6f00cc; /* Thicker, slightly darker border */
+    text-align: center;
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+.timeline-overview-bubble-education::before {
+    content: "Education Timeline"; /* Primary text */
+    display: block;
+    margin-bottom: 5px; /* Space between lines */
+    font-size: 1em; /* Relative to parent's font-size */
+}
+
+.timeline-overview-bubble-education::after {
+    content: "Overview"; /* Secondary text */
+    display: block;
+    font-size: 0.7 em; /* Smaller */
+    opacity: 0.8;
+}
+
+/* Specific styling for the Career Overview Bubble */
+.timeline-overview-bubble.career {
+   right: 150px; /* Adjust to place it appropriately on the left side */
+    top: 50%;
+    transform: translateY(-50%);
+    /* These properties are inherited from .timeline-overview-bubble, but explicitly listed for clarity */
+    width: 250px;
+    height: 250px;
+    background: linear-gradient(135deg, #4b0082, #8a2be2);
+    box-shadow: 0 0 20px #2a0066, 0 0 40px #5a12d6, 0 0 60px #8a2be2; /* More intense glow */
+    border: 2px solid #8a2be2;
+}
+
+/* Pseudo-elements for displaying text for the Career overview bubble from data-collapsed-text */
+.timeline-overview-bubble.career::before {
+    content: attr(data-collapsed-text); /* Get content from data-collapsed-text */
+    display: block;
+    margin-bottom: 5px; /* Space between lines */
+    font-size: 1em; /* Relative to parent's font-size */
+}
+
+.timeline-overview-bubble.career::after {
+    content: "Overview"; /* Secondary text */
+    display: block;
+    font-size: 0.7em; /* Smaller */
+    opacity: 0.8;
+}
+
+
+.timeline-overview-bubble:hover,
+.timeline-overview-bubble-education:hover {
+    transform: translateY(-50%) scale(1.05); /* Slightly enlarge on hover */
+    box-shadow: 0 0 20px rgba(138, 43, 226, 0.9), 0 0 40px rgba(138, 43, 226, 0.7);
+}
+
+.overview-connection-svg {
+    position: absolute;
+    width: calc(100% - 300px); /* Adjust width to connect between bubbles */
+    max-width: 400px; /* Max width to control connection length */
+    height: 100px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 4;
+}
+
+.overview-path {
+    stroke: #add8e6; /* Light blue color for the path */
+    stroke-width: 3;
+    fill: none;
+    stroke-dasharray: 8 8; /* Dashed line */
+    animation: dash 20s linear infinite; /* Animation for the dashed line */
+}
+
+@keyframes dash {
+    to {
+        stroke-dashoffset: -1000;
+    }
+}
+
+
+/* --- SVG Wrapper for Expanded View --- */
 .svg-wrapper {
-  position: relative;
-  width: 100%;
-  max-width: 1000px;
-   margin: 2.5rem auto 0 auto; 
-  height: 400px;
+    position: absolute;
+    top: 50%; /* Center vertically */
+    left: 0;
+    width: 3500px; /* Must match SVG viewBox width */
+    height: 200px; /* Must match SVG viewBox height */
+    transform: translateY(-50%);
+    transition: transform 0.5s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Align items to the start for horizontal scrolling */
+    pointer-events: none; /* Allows click through to icons if needed, but icons handle their own events */
+    /* background-color: rgba(255, 0, 0, 0.1); /* For debugging position */
 }
 
 .timeline-svg {
-  width: 100%;
-  height: 100%;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    overflow: visible; /* Allow path to extend beyond bounds if needed */
 }
 
 .timeline-path {
-  fill: none;
-  stroke: #00fff7;
-  stroke-width: 3;
-  stroke-dasharray: 10;
-  animation: dash-move 8s linear infinite;
-  stroke-linecap: round;
-  filter: drop-shadow(0 0 10px #a64dff);
+    stroke: #00ffff; /* Cyan color */
+    stroke-width: 4;
+    fill: none;
+    stroke-dasharray: 10 10; /* Dashed line effect */
+    animation: dash 20s linear infinite; /* Animate dashes for a flowing effect */
 }
 
-/* Glowing icons */
+/* General style for timeline icons (SSC, HSC, Diploma, Graduation, Career, etc.) */
 .timeline-icon {
-  position: absolute;
-  background: #0a0a0a;
-  border: 2px solid #a64dff;
-  border-radius: 50%;
-  padding: 1rem;
-  color: white;
-  font-size: 1.5rem;
-  box-shadow: 0 0 12px #00fff7, 0 0 20px #ff70a6;
-  text-align: center;
-  transform: translate(-50%, -50%);
-  transition: transform 0.3s ease;
+    position: absolute;
+    width: 100px; /* Standard size for detailed icons */
+    height: 100px;
+    border-radius: 50%;
+    background: radial-gradient(circle at center, #1a0033 0%, #4b0082 100%); /* Dark purple to indigo */
+    border: 2px solid #8a2be2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 0.9em;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out, box-shadow 0.3s ease;
+    box-shadow: 0 0 10px rgba(138, 43, 226, 0.5); /* Subtle glow */
+    z-index: 2; /* Ensure icons are above SVG path */
+    transform: translateY(-50%); /* Adjust for vertical centering based on actual top position */
+}
+
+.timeline-icon svg {
+    font-size: 2em; /* Icon size */
+    margin-bottom: 5px;
+    color: #00ffff; /* Cyan color for icons */
+}
+
+.timeline-icon .timeline-label {
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+.timeline-icon .timeline-year {
+    font-size: 0.8em;
+    opacity: 0.8;
 }
 
 .timeline-icon:hover {
-  transform: translate(-50%, -50%) scale(1.15);
-  box-shadow: 0 0 20px #a64dff, 0 0 30px #ff70a6;
+    transform: translateY(-50%) scale(1.1); /* Enlarge slightly on hover */
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.8), 0 0 30px rgba(0, 255, 255, 0.6); /* Cyan glow on hover */
+    border-color: #00ffff;
 }
 
-.timeline-label {
-  display: block;
-  margin-top: 0.5rem;
-  font-size: 0.75rem;
-  font-family: 'Orbitron', sans-serif;
-  color: #fff;
-  text-shadow: 0 0 3px #f0f;
-}
-
-/* Positions manually adjusted to curve shape */
-.icon1 {
-  top: 250px;
-  left: 5%;
-}
-
-.icon2 {
-  top: 80px;
-  left: 30%;
-}
-
-.icon3 {
-  top: 250px;
-  left: 58%;
-}
-
-.icon4 {
-  top: 80px;
-  left: 90%;
-}
-
-/* Animate dash */
-@keyframes dash-move {
-  to {
-    stroke-dashoffset: -100;
-  }
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .timeline-title {
-    font-size: 2rem;
-  }
-
-  .timeline-icon {
-    padding: 0.8rem;
-    font-size: 1.2rem;
-  }
-
-  .timeline-label {
-    font-size: 0.65rem;
-  }
-}
-
+/* Tooltip styles */
 .timeline-tooltip {
-  position: absolute;
-  bottom: 130%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 200px;
-  background: rgba(0, 0, 0, 0.9);
-  color: #fff;
-  padding: 0.8rem 1rem;
-  border-radius: 10px;
-  font-family: 'Orbitron', sans-serif;
-  font-size: 0.75rem;
-  text-align: left;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease;
-  z-index: 10;
-  box-shadow: 0 0 10px #a64dff, 0 0 15px #00fff7;
+    position: absolute;
+    bottom: calc(100% + 10px); /* Position above the bubble */
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(26, 0, 51, 0.95); /* Darker, slightly transparent background */
+    border: 1px solid #00ffff;
+    border-radius: 8px;
+    padding: 10px 15px;
+    color: white;
+    font-size: 0.85em;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 10; /* Ensure tooltip is on top */
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+    pointer-events: none; /* Allows hover on the icon to remain active */
 }
 
 .timeline-tooltip h1 {
-  margin: 0 0 0.4rem;
-  font-size: 0.85rem;
-  color: #00fff7;
+    font-size: 1.1em;
+    margin-bottom: 5px;
+    color: #00ffff;
 }
 
 .timeline-tooltip p {
-  margin: 0rem 0;
-   /* font-size: 0.1rem; */
-  color: #ddd;
+    margin: 0;
+    line-height: 1.4;
 }
 
-/* Show tooltip on hover */
 .timeline-icon:hover .timeline-tooltip {
-  opacity: 1;
+    opacity: 1;
+    visibility: visible;
 }
-.timeline-year {
-  display: block;
-  margin-top: 0.3rem;
-  font-size: 0.7rem;
-  color: #ccc;
-  font-family: 'Orbitron', sans-serif;
-  text-shadow: 0 0 2px #00fff7;
+
+
+/* Specific positioning for detailed icons relative to svg-wrapper and viewBox */
+/* These 'left' values correspond to the x-coordinates in the SVG viewBox (0 0 3500 200) */
+/* Assuming top: 80px for icons on higher part of path, 250px for lower part */
+/* SVG y: 40 (80/400 * 200) for higher, 125 (250/400 * 200) for lower */
+
+/* Education Section Icons */
+.icon-main-education {
+    left: 100px;
+    top: 50%; /* Center it vertically, then use transform to align with path */
+    transform: translateY(-50%);
+    width: 140px; /* Slightly larger for main bubbles */
+    height: 140px;
+    background: radial-gradient(circle at center, #8a2be2 0%, #4b0082 100%);
+    border-color: #6f00cc;
+    box-shadow: 0 0 20px #2a0066, 0 0 40px #5a12d6, 0 0 60px #8a2be2;
+    font-size: 1.1em;
+}
+
+.icon-ssc {
+    left: 400px; /* Approx x-coord on path */
+    top: 40px; /* SVG y = 40 */
+}
+
+.icon-hsc {
+    left: 700px; /* Approx x-coord on path */
+    top: 125px; /* SVG y = 125 */
+}
+
+.icon-diploma {
+    left: 1000px; /* Approx x-coord on path */
+    top: 40px; /* SVG y = 40 */
+}
+
+.icon-graduation {
+    left: 1300px; /* Approx x-coord on path */
+    top: 125px; /* SVG y = 125 */
+}
+
+/* Career Section Icons */
+.icon-main-career {
+    left: 1600px;
+    top: 50%; /* Center it vertically, then use transform to align with path */
+    transform: translateY(-50%);
+    width: 140px; /* Slightly larger for main bubbles */
+    height: 140px;
+    background: radial-gradient(circle at center, #8a2be2 0%, #4b0082 100%);
+    border-color: #6f00cc;
+    box-shadow: 0 0 20px #2a0066, 0 0 40px #5a12d6, 0 0 60px #8a2be2;
+    font-size: 1.1em;
+}
+
+.icon-intern {
+    left: 1900px; /* Approx x-coord on path */
+    top: 125px; /* SVG y = 125 */
+}
+
+.icon-junior-dev {
+    left: 2200px; /* Approx x-coord on path */
+    top: 40px; /* SVG y = 40 */
+}
+
+.icon-project-lead {
+    left: 2500px; /* Approx x-coord on path */
+    top: 125px; /* SVG y = 125 */
+}
+
+.icon-senior-arch {
+    left: 2800px; /* Approx x-coord on path */
+    top: 40px; /* SVG y = 40 */
+}
+
+/* Utility classes for visibility */
+.visible-element {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto; /* Enable interactions */
+}
+
+.hidden-element {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none; /* Disable interactions */
+}
+
+.section-active {
+    pointer-events: auto; /* Enable dragging for the svg-wrapper when a section is active */
 }
