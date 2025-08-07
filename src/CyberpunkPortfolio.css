@@ -389,3 +389,31 @@ Glassy Card Effect
   justify-content: center;   /* Centers cards */
   gap: 1.5rem;               /* Space between cards */
 }
+
+
+/* Pop-up Modal Styling */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1050; /* Ensure it's above other content */
+}
+
+.modal-content-cyber {
+    background: var(--card-bg);
+    border: 1px solid var(--neon-cyan);
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.7), 0 0 30px rgba(255, 0, 255, 0.7);
+    text-align: center;
+    padding: 3rem;
+    max-width: 500px;
+    width: 90%;
+    border-radius: 0.5rem;
+    animation: fadeIn 0.5s ease-in-out;
+}
