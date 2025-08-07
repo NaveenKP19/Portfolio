@@ -1,9 +1,8 @@
-
 /* General container for the timeline */
 .timeline-container {
     position: relative;
     width: 100%;
-    height: 700px; /* Adjust height as needed */
+    height: 550px; /* Adjust height as needed */
     overflow: hidden; /* Hide overflow content for dragging */
     background: #0d0a1d; /* Dark background */
     border: 2px solid #5a12d6;
@@ -11,12 +10,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    user-select:auto; 
-     cursor:grab;
+    user-select: auto; 
+    cursor: auto; /* Changed from grab to auto to fix mouse issue */
 }
 
 .timeline-container.dragging {
-    cursor:grabbing;
+    cursor: grabbing;
 }
 
 .timeline-title {
@@ -101,7 +100,7 @@
 
 /* Specific styling for the Career Overview Bubble */
 .timeline-overview-bubble.career {
-   right: 150px; /* Adjust to place it appropriately on the left side */
+    right: 150px; /* Adjust to place it appropriately on the left side */
     top: 50%;
     transform: translateY(-50%);
     /* These properties are inherited from .timeline-overview-bubble, but explicitly listed for clarity */
@@ -327,7 +326,7 @@
 
 .icon-intern {
     left: 1900px; /* Approx x-coord on path */
-    top: 125px; /* SVG y = 125 */
+    top: 135px; /* SVG y = 125 */
 }
 
 .icon-junior-dev {
@@ -360,4 +359,25 @@
 
 .section-active {
     pointer-events: auto; /* Enable dragging for the svg-wrapper when a section is active */
+}
+
+
+.drag-hint {
+    position: absolute;
+    bottom: 20px; /* Adjust as needed */
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+    padding: 8px 15px;
+    color: white;
+    font-size: 0.9em;
+    pointer-events: none; /* Allows clicks to go through to the container */
+    animation: fade-in 1s ease-in-out;
+}
+
+@keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }

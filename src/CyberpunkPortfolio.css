@@ -66,7 +66,7 @@ Glassy Card Effect
     -webkit-backdrop-filter: blur(8px);
     border: 1px solid var(--card-border);
     border-radius: 0.5rem; 
-    padding: 1.75rem; 
+    /* padding: 1 rem;  */
     box-shadow: 0 0 15px rgba(0,255,255,0.2), 0 0 25px rgba(255,0,255,0.2);
     transition: all 0.4s ease-in-out;
     position: relative;
@@ -357,20 +357,6 @@ Glassy Card Effect
 }
 
 
-#projects {
-  background-color: #060616;
-  padding: 2rem;
-  margin-top: 2rem;
-  border: 2px solid #ff6e00; /* Neon orange border */
-  border-radius: 14px;
-  box-shadow:
-    0 0 10px #ff6e00,
-    0 0 20px #ff6e00,
-    0 0 40px #ff6e00,
-    0 0 60px #ff6e00;
-}
-
-
 .card-cyber {
   max-width: 300px; /* Shrinks width of each card */
   padding: 1rem;     /* Reduce internal spacing */
@@ -396,19 +382,10 @@ Glassy Card Effect
   padding: 1rem 0;
 }
 
-.carousel-3d-wrapper {
-  overflow-x: hidden;
-  width: 100%;
-}
 
 .carousel-3d {
   display: flex;
   flex-wrap: wrap;           /* Allows cards to wrap to next line */
   justify-content: center;   /* Centers cards */
   gap: 1.5rem;               /* Space between cards */
-}
-.carousel-item-cyber {
-  flex: 1 1 300px;       /* Responsive, wraps at 300px width */
-  max-width: 300px;      /* Prevents overflowing too wide */
-  box-sizing: border-box;
 }
