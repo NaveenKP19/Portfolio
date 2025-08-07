@@ -513,7 +513,7 @@ const App = () => {
     </div>
     <div className="col-md-6">
       <div className="card-cyber p-5">
-        <form name="contact" method="POST" data-netlify="true">
+<form name="contact" method="POST" data-netlify="true" action="/success.html">
           <input type="hidden" name="form-name" value="contact" />
           <div className="mb-4">
             <label htmlFor="name" className="form-label text-cyan-300 text-sm fw-bold mb-2 font-orbitron">NAME_INPUT</label>
@@ -543,9 +543,16 @@ const App = () => {
             TRANSMIT_DATA <i className="fas fa-paper-plane ms-2"></i>
           </button>
         </form>
+
+        <div id="success-message" style="display:none;" class="text-center mt-4">
+        <p class="fs-4 text-success font-orbitron">Form Submitted Successfully! ✅</p>
+        <p class="text-gray-400">Thank you for your message. We'll be in touch soon.</p>
+      </div>
       </div>
     </div>
   </div>
+
+  
 </section>
 
       {/* Footer */}
