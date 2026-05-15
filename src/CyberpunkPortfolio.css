@@ -1,4 +1,6 @@
 /* Global Styles */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@400;700&family=Fira+Code:wght@400;700&display=swap');
+
 :root {
     --bg-dark: #0a0a0a;
     --bg-darker: #1a1a1a;
@@ -71,6 +73,7 @@ Glassy Card Effect
     transition: all 0.4s ease-in-out;
     position: relative;
     overflow: hidden;
+     height: 450px; /* Example value */
 }
 .card-cyber:hover {
     transform: scale(1.05);
@@ -358,11 +361,15 @@ Glassy Card Effect
 
 
 .card-cyber {
-  max-width: 300px; /* Shrinks width of each card */
   padding: 1rem;     /* Reduce internal spacing */
   margin: auto;      /* Center the cards */
   transform: scale(0.9); /* Slightly scale down the overall card */
   transition: transform 0.3s ease-in-out;
+  /* Add or ensure the following properties are present */
+  width: 100%;
+  box-sizing: border-box; /* Ensures padding and border are included in the element's total width and height */
+  display: flex;
+  flex-direction: column; /* Stacks image, title, and description vertically */
 }
 
 /* Optional: on hover, scale up slightly for effect */
@@ -417,3 +424,255 @@ Glassy Card Effect
     border-radius: 0.5rem;
     animation: fadeIn 0.5s ease-in-out;
 }
+
+.certificate-category-box {
+  border: 2px solid var(--neon-cyan);
+  padding: 2rem;
+  border-radius: 0.5rem;
+  background-color: var(--card-bg);
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.3), 0 0 20px rgba(255, 0, 255, 0.3);
+}
+
+.certificate-category-box .card-cyber {
+  /* You can optionally add overrides here to style cards within the box */
+  margin-bottom: 0;
+}
+
+/* For WebKit-based browsers (Chrome, Safari, newer Edge) */
+.carousel-3d-wrapper::-webkit-scrollbar {
+    display: none;
+}
+
+/* For Firefox */
+.carousel-3d-wrapper {
+    scrollbar-width: none;
+}
+
+/* 
+ */
+
+ .app-container {
+            min-height: 100vh;
+            background-color: #0d1117;
+            color: #e0e0e0;
+            font-family: 'Inter', sans-serif;
+            padding: 2rem 0;
+          }
+
+          .certificate-section {
+            padding: 4rem 1rem;
+            max-width: 80rem;
+            margin-left: auto;
+            margin-right: auto;
+          }
+
+          .section-title-cyber {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: #0ff;
+            text-align: center;
+            letter-spacing: 0.1em;
+            text-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
+            margin-bottom: 2rem;
+            position: relative;
+            animation: text-flicker 2s infinite alternate;
+          }
+
+          .certificate-categories {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+          }
+
+          .certificate-category-box {
+            padding-bottom: 3rem;
+          }
+
+          .category-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.875rem; /* text-3xl */
+            font-weight: 700;
+            color: fuchsia;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid #a020f0;
+            padding-bottom: 0.5rem;
+          }
+
+          .category-separator {
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            border: none;
+            border-top: 2px solid #4a4a4a;
+          }
+
+          /* New CSS for Responsive Row/Column Layout */
+          .responsive-row-container {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+          }
+
+          @media (min-width: 768px) {
+            .responsive-row-container {
+              flex-direction: row;
+            }
+          }
+          
+          .responsive-card {
+            background: rgba(26, 26, 26, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 0.5rem;
+            border: 1px solid rgba(51, 51, 51, 0.8);
+            padding: 1rem;
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.2), 0 0 25px rgba(255, 0, 255, 0.2);
+            transition: all 400ms ease-in-out;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+          }
+
+          .responsive-card:hover {
+            transform: scale(1.05);
+            border-color: #0ff;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.7), 0 0 30px rgba(255, 0, 255, 0.7);
+          }
+
+          @media (min-width: 768px) {
+            .responsive-card {
+              flex-direction: row;
+            }
+          }
+
+          .responsive-image-wrapper {
+            flex-shrink: 0;
+            width: 100%;
+            max-width: 15rem; /* Adjust as needed */
+          }
+
+          @media (max-width: 767px) {
+            .responsive-image-wrapper {
+              max-width: 100%;
+              height: 10rem;
+            }
+          }
+
+          .responsive-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 0.25rem;
+            border: 1px solid rgba(51, 51, 51, 0.8);
+          }
+          
+          .responsive-content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            padding-left: 0;
+            padding-top: 1rem;
+          }
+
+          @media (min-width: 768px) {
+            .responsive-content {
+              padding-left: 1rem;
+              padding-top: 0;
+            }
+          }
+
+          .card-title-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            color: #0ff;
+            font-family: 'Orbitron', sans-serif;
+          }
+
+          .card-title {
+            margin-left: 0.75rem;
+            font-size: 1.125rem;
+            font-weight: 700;
+          }
+
+          .card-issuer, .card-date {
+            font-size: 0.875rem;
+            font-family: 'Fira Code', monospace;
+            color: #a0a0a0;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+          }
+
+          .card-issuer i {
+            font-size: 1rem;
+            margin-right: 0.5rem;
+            color: #e0e0e0;
+          }
+
+          .card-date {
+            font-size: 0.75rem;
+            margin-bottom: 1rem;
+          }
+          
+          .card-description {
+            color: #e0e0e0;
+            flex-grow: 1;
+            margin-bottom: 1rem;
+            font-size: 0.875rem;
+          }
+
+          .btn-cyber {
+            margin-top: auto;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0.5rem;
+            padding: 1rem 2rem;
+            transition: all 300ms ease-in-out;
+            font-family: 'Orbitron', sans-serif;
+            color: white;
+            font-size: 1rem;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(to right, #00BCD4, #E91E63);
+            text-shadow: 0 0 5px rgba(255,255,255,0.8);
+            letter-spacing: 1px;
+            text-decoration: none;
+          }
+          
+          .btn-cyber:hover {
+            transform: translateY(-3px) scale(1.05);
+          }
+          
+          .btn-cyber i {
+            margin-right: 0.5rem;
+          }
+
+          .icon-cyan {
+            color: #0ff;
+            font-size: 1.5rem;
+          }
+
+          .icon-light {
+            color: #e0e0e0;
+            font-size: 1rem;
+          }
+
+          @keyframes text-flicker {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+          }
+          
+          @keyframes slide-up {
+            0% { transform: translateY(50px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+          }
+          
+          .animate-slide-up {
+            animation-name: slide-up;
+            animation-duration: 1s;
+            animation-fill-mode: both;
+          }
